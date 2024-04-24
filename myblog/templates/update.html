@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="container2">
+        <h1>Update Post</h1>
+        <form action="{% url 'uprec' post.id %}" method="post">
+            {% csrf_token %}
+            <label for="">title</label><br><br>
+            <input type="text" name="blogTitle" value="{{post.title}}"><br><br>
+            <label for="">author</label><br><br>
+            <input type="text" name="blogAuthor" value="{{post.author}}"><br><br>
+            <label for="">body</label><br><br>
+            <input type="text" name="body" value="{{post.body}}"><br><br>
+            <button type="submit" id="new1">Update</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
