@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Post
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -52,3 +53,12 @@ def uprec(request, id):
     post.save()
 
     return redirect("/posts")
+
+def authView(request):
+    if request.method == "POST" :
+        form = UserCreationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/signup.html", {"form": form})
